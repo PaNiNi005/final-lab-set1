@@ -1,4 +1,6 @@
 const { Pool } = require('pg');
+const fs   = require('fs');
+const path = require('path');
 
 const pool = new Pool({
   host:     process.env.DB_HOST     || 'auth-db',
@@ -10,8 +12,6 @@ const pool = new Pool({
 
 // Auto-create tables on startup
 async function initDB() {
-  const fs = require('fs');
-  const path = require('path');
   const sql = fs.readFileSync(
     path.join(__dirname, 'init.sql'), 'utf8'
   );
