@@ -1,0 +1,64 @@
+services:
+  # ── Database ──────────────────────────────────────────────────
+  db:
+    image: postgres:15-alpine
+    container_name: lab-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: labdb
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - lab-network
+
+  # ── Nginx API Gateway ─────────────────────────────────────────
+  nginx:
+    build: ./nginx
+    container_name: lab-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - auth-service
+      - task-service
+      - log-service
+      - frontend
+    volumes:
+      - ./nginx/certs:/etc/nginx/certs:ro
+    networks:
+      - lab-network
+
+  # ── Services อื่นๆ (ใส่ Placeholder ไว้ก่อนเพื่อให้ Nginx รันได้) ──
+  auth-service:
+    image: alpine
+    command: ["/bin/sh", "-c", "while true; do sleep 30; done"]
+    networks:
+      - lab-network
+
+  task-service:
+    image: alpine
+    command: ["/bin/sh", "-c", "while true; do sleep 30; done"]
+    networks:
+      - lab-network
+
+  log-service:
+    image: alpine
+    command: ["/bin/sh", "-c", "while true; do sleep 30; done"]
+    networks:
+      - lab-network
+
+  frontend:
+    image: alpine
+    command: ["/bin/sh", "-c", "while true; do sleep 30; done"]
+    networks:
+      - lab-network
+
+networks:
+  lab-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
