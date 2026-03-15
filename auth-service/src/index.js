@@ -3,7 +3,6 @@ const express = require('express');
 const cors    = require('cors');
 const morgan  = require('morgan');
 const { initDB } = require('./db/db');
-const { seedUsers } = require('./db/seed');   // ← ✨ v2.0: เพิ่ม seed
 const authRoutes = require('./routes/auth');
 
 const app  = express();
