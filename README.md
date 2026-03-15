@@ -48,18 +48,23 @@ Final Lab ชุดที่ 1 เป็นการพัฒนาระบบ 
 ## 4. Architecture Overview
 
 ```text
-Browser / Postman
-       │
-       │ HTTPS :443
-       ▼
-Nginx (API Gateway)
-   ├── /api/auth/*  → auth-service
-   ├── /api/tasks/* → task-service
-   ├── /api/logs/*  → log-service
-   └── /            → frontend
-            │
-            ▼
-     PostgreSQL (shared DB)
+[ User / Client ]
+              │
+              │ (HTTPS - Port 443)
+              ▼
+      +-----------------------------+
+      |      Nginx (API Gateway)    | <--- TLS Termination / Load Balancing
+      +-----------------------------+
+         │           │           │
+         ▼           ▼           ▼
+  [ Auth-Svc ] [ Task-Svc ] [ Log-Svc ] <--- Node.js Microservices
+         │           │           │
+         └─────┬─────┴─────┬─────┘
+               ▼           ▼
+      +-----------------------------+
+      |  PostgreSQL (Shared Volume) | <--- Data Persistence Layer
+      +-----------------------------+
+
 ```
 
 ### Services ที่ใช้ในระบบ
