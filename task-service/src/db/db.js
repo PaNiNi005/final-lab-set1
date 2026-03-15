@@ -3,11 +3,11 @@ const fs   = require('fs');
 const path = require('path');
 
 const pool = new Pool({
-  host:     process.env.DB_HOST     || 'task-db',
+  host:     process.env.DB_HOST     || 'db', 
   port:     5432,
-  database: process.env.DB_NAME     || 'task_db',
-  user:     process.env.DB_USER     || 'task_user',
-  password: process.env.DB_PASSWORD || 'task_secret',
+  database: process.env.DB_NAME     || 'labdb',
+  user:     process.env.DB_USER     || 'user',
+  password: process.env.DB_PASSWORD || 'password',
 });
 
 async function initDB() {
