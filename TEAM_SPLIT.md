@@ -27,7 +27,7 @@
 **รับผิดชอบงานหลักดังต่อไปนี้**
 * **Frontend Development (Part 7-8):** พัฒนาหน้าจอ Task Board UI และ Log Dashboard (HTTPS Fetch & RBAC)
 * **Project Structure & Scaffolding:** ออกแบบและสร้างโครงสร้าง Repository, โฟลเดอร์ และไฟล์เริ่มต้นทั้งหมด
-* **Documentation & Integration:** จัดทำเอกสารโครงสร้างระบบ (Architecture Diagram) และดูแลภาพรวมการเชื่อมต่อระหว่างหน้าบ้านและหลังบ้าน
+* **Documentation & Integration:** จัดทำเอกสารและดูแลภาพรวมการเชื่อมต่อระหว่างหน้าบ้านและหลังบ้าน
 
 ---
 
